@@ -1,0 +1,19 @@
+{
+    "name": "samara",
+    "version": "0.0.1",
+    "description": "Default TypeScript-Functions, which i use in many Projects",
+    "main": "index.js",
+    "scripts": {},
+    "keywords": [
+        "TypeScript",
+        "Functions",
+        "Default",
+        "System"
+    ],
+    "author": "",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/node": "^14.14.7",
+        "typescript": "^4.0.5"
+    }
+}
