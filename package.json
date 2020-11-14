@@ -1,6 +1,6 @@
 {
     "name": "samara",
-    "version": "0.0.1",
+    "version": "0.1.0",
     "description": "Default TypeScript-Functions, which i use in many Projects",
     "main": "index.js",
     "scripts": {},
@@ -10,7 +10,7 @@
         "Default",
         "System"
     ],
-    "author": "",
+    "author": "Leo Battaglia",
     "license": "ISC",
     "devDependencies": {
         "@types/node": "^14.14.7",
