@@ -1,7 +1,7 @@
 {
     "name": "samara",
-    "version": "0.1.0",
-    "description": "Default TypeScript-Functions, which i use in many Projects",
+    "version": "0.1.1",
+    "description": "Simple TypeScript-Functions, which i use in many Projects",
     "main": "index.js",
     "scripts": {},
     "keywords": [
