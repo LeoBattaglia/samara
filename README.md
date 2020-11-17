@@ -13,6 +13,7 @@ const sys = require("samara");
 
 ## Functions
 - getRequest
+- getRequestSync
 - isNull
 - removeAll
 - removeBreaksAndTabs

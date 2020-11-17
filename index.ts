@@ -18,6 +18,21 @@ export function getRequest(url:string, callback){
         callback(undefined);
     });
 }
+export async function getRequestSync(url:string, callback){
+    let httpsMode:Boolean = url.indexOf("https:") == 0;
+    let client = httpsMode ? https : http;
+    client.get(url, await function(res){
+        let data = '';
+        res.on('data', (d) => {
+            data += d;
+        });
+        res.on('end', () => {
+            return data;
+        });
+    }).on("error", (err) => {
+        return undefined;
+    });
+}
 
 export function isNull(str:string):Boolean{
     if(str === null || str === undefined || str === ""){
