@@ -21,7 +21,7 @@ export function getRequest(url:string, callback){
 export async function getRequestSync(url:string){
     let httpsMode:Boolean = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
-    client.get(url, await function(res){
+    await client.get(url, await function(res){
         let data = '';
         res.on('data', (d) => {
             data += d;

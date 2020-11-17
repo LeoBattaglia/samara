@@ -76,10 +76,11 @@ function getRequestSync(url) {
                                 return data;
                             });
                         }];
-                case 1:
-                    _b.apply(_a, _c.concat([_d.sent()])).on("error", function (err) {
+                case 1: return [4 /*yield*/, _b.apply(_a, _c.concat([_d.sent()])).on("error", function (err) {
                         return undefined;
-                    });
+                    })];
+                case 2:
+                    _d.sent();
                     return [2 /*return*/];
             }
         });

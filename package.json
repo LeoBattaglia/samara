@@ -1,6 +1,6 @@
 {
     "name": "samara",
-    "version": "0.1.5",
+    "version": "0.1.6",
     "description": "Simple TypeScript-Functions, which i use in many Projects",
     "main": "index.js",
     "scripts": {},
