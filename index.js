@@ -57,7 +57,7 @@ function getRequest(url, callback) {
     });
 }
 exports.getRequest = getRequest;
-function getRequestSync(url, callback) {
+function getRequestSync(url) {
     return __awaiter(this, void 0, void 0, function () {
         var httpsMode, client, _a, _b, _c;
         return __generator(this, function (_d) {
