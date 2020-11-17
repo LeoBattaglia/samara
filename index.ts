@@ -3,7 +3,7 @@ const http = require('http');
 const https = require('https');
 
 //Functions
-function getRequest(url:string, callback){
+export function getRequest(url:string, callback){
     let httpsMode:Boolean = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
     client.get(url, (res) => {

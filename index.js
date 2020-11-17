@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = void 0;
+exports.replaceAll = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = void 0;
 //Constants
 var http = require('http');
 var https = require('https');
@@ -20,6 +20,7 @@ function getRequest(url, callback) {
         callback(undefined);
     });
 }
+exports.getRequest = getRequest;
 function isNull(str) {
     if (str === null || str === undefined || str === "") {
         return true;
