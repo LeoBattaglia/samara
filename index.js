@@ -1,6 +1,25 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.replaceAll = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = void 0;
+//Constants
+var http = require('http');
+var https = require('https');
+//Functions
+function getRequest(url, callback) {
+    var httpsMode = url.indexOf("https:") == 0;
+    var client = httpsMode ? https : http;
+    client.get(url, function (res) {
+        var data = '';
+        res.on('data', function (d) {
+            data += d;
+        });
+        res.on('end', function () {
+            callback(data);
+        });
+    }).on("error", function (err) {
+        callback(undefined);
+    });
+}
 function isNull(str) {
     if (str === null || str === undefined || str === "") {
         return true;

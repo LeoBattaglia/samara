@@ -1,3 +1,24 @@
+//Constants
+const http = require('http');
+const https = require('https');
+
+//Functions
+function getRequest(url:string, callback){
+    let httpsMode:Boolean = url.indexOf("https:") == 0;
+    let client = httpsMode ? https : http;
+    client.get(url, (res) => {
+        let data = '';
+        res.on('data', (d) => {
+            data += d;
+        });
+        res.on('end', () => {
+            callback(data);
+        });
+    }).on("error", (err) => {
+        callback(undefined);
+    });
+}
+
 export function isNull(str:string):Boolean{
     if(str === null || str === undefined || str === ""){
         return true;
