@@ -44,7 +44,7 @@ export function removeDoubleSpaces(str:string):string{
     return replaceAll(str, "  ", " ");
 }
 
-function removeTags(str:string):string{
+export function removeTags(str:string):string{
     while(str.indexOf("<") > -1 && str.indexOf(">") > str.indexOf("<")){
         let start = str.substring(0, str.indexOf("<"));
         let end = str.substring(str.indexOf(">") + 1, str.length);

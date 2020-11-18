@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = void 0;
+exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = void 0;
 //Constants
 var http = require('http');
 var https = require('https');
@@ -55,6 +55,7 @@ function removeTags(str) {
     }
     return str;
 }
+exports.removeTags = removeTags;
 function replaceAll(str, search, replace) {
     while (str.indexOf(search) > -1) {
         str = str.replace(search, replace);
