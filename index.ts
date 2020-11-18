@@ -18,21 +18,6 @@ export function getRequest(url:string, callback){
         callback(undefined);
     });
 }
-export async function getRequestSync(url:string){
-    let httpsMode:Boolean = url.indexOf("https:") == 0;
-    let client = httpsMode ? https : http;
-    await client.get(url, await function(res){
-        let data = '';
-        res.on('data', (d) => {
-            data += d;
-        });
-        res.on('end', () => {
-            return data;
-        });
-    }).on("error", (err) => {
-        return undefined;
-    });
-}
 
 export function isNull(str:string):Boolean{
     if(str === null || str === undefined || str === ""){
@@ -57,6 +42,15 @@ export function removeBreaksAndTabs(str:string):string{
 
 export function removeDoubleSpaces(str:string):string{
     return replaceAll(str, "  ", " ");
+}
+
+function removeTags(str:string):string{
+    while(str.indexOf("<") > -1 && str.indexOf(">") > str.indexOf("<")){
+        let start = str.substring(0, str.indexOf("<"));
+        let end = str.substring(str.indexOf(">") + 1, str.length);
+        str = start + end;
+    }
+    return str;
 }
 
 export function replaceAll(str:string, search:string, replace:string):string{
