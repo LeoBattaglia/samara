@@ -1,10 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = void 0;
+exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = void 0;
 //Constants
 var http = require('http');
 var https = require('https');
 //Functions
+function fillString(str, length, char, left) {
+    while (str.length < length) {
+        if (left) {
+            str = char + str;
+        }
+        else {
+            str += char;
+        }
+    }
+    return str;
+}
+exports.fillString = fillString;
 function getRequest(url, callback) {
     var httpsMode = url.indexOf("https:") == 0;
     var client = httpsMode ? https : http;
@@ -31,10 +43,7 @@ function isNull(str) {
 }
 exports.isNull = isNull;
 function removeAll(str, search) {
-    while (str.indexOf(search) > -1) {
-        str = str.replace(search, "");
-    }
-    return str;
+    return replaceAll(str, search, "");
 }
 exports.removeAll = removeAll;
 function removeBreaksAndTabs(str) {

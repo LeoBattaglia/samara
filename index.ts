@@ -3,6 +3,17 @@ const http = require('http');
 const https = require('https');
 
 //Functions
+export function fillString(str:string, length:number, char:string, left:Boolean):string{
+    while(str.length < length){
+        if(left){
+            str = char + str;
+        }else{
+            str += char;
+        }
+    }
+    return str;
+}
+
 export function getRequest(url:string, callback){
     let httpsMode:Boolean = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
@@ -28,10 +39,7 @@ export function isNull(str:string):Boolean{
 }
 
 export function removeAll(str:string, search:string):string{
-    while(str.indexOf(search) > -1){
-        str = str.replace(search, "");
-    }
-    return str;
+    return replaceAll(str, search, "");
 }
 
 export function removeBreaksAndTabs(str:string):string{
