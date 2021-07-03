@@ -1,10 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = void 0;
+exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = void 0;
 //Constants
 var http = require('http');
 var https = require('https');
 //Functions
+function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+exports.capitalizeFirstLetter = capitalizeFirstLetter;
 function fillString(str, length, char, left) {
     while (str.length < length) {
         if (left) {

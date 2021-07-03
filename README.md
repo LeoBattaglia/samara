@@ -1,6 +1,6 @@
 # Samara
 
-A small Set of TypeScript-Functions, which I use in different Projects.
+A small Set of basic TypeScript-Functions, which I use in different Projects.
 
 ## Import
 ```
@@ -12,6 +12,7 @@ const sys = require("samara");
 ``` 
 
 ## Functions
+- capitalizeFirstLetter
 - fillString
 - getRequest
 - isNull

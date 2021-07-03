@@ -3,6 +3,10 @@ const http = require('http');
 const https = require('https');
 
 //Functions
+export function capitalizeFirstLetter(str:string):string{
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+
 export function fillString(str:string, length:number, char:string, left:Boolean):string{
     while(str.length < length){
         if(left){
