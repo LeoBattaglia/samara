@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = void 0;
+exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = void 0;
 //Constants
 var http = require('http');
 var https = require('https');
@@ -56,6 +56,10 @@ function removeBreaksAndTabs(str) {
     return str.trim();
 }
 exports.removeBreaksAndTabs = removeBreaksAndTabs;
+function removeDoubleBreaks(str) {
+    return replaceAll(str, "\r\n\r\n", "\r\n");
+}
+exports.removeDoubleBreaks = removeDoubleBreaks;
 function removeDoubleSpaces(str) {
     return replaceAll(str, "  ", " ");
 }

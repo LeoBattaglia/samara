@@ -52,6 +52,10 @@ export function removeBreaksAndTabs(str:string):string{
     return str.trim();
 }
 
+export function removeDoubleBreaks(str:string):string{
+    return replaceAll(str, "\r\n\r\n", "\r\n");
+}
+
 export function removeDoubleSpaces(str:string):string{
     return replaceAll(str, "  ", " ");
 }

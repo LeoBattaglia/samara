@@ -1,12 +1,14 @@
 {
     "name": "samara",
-    "version": "0.1.11",
+    "version": "0.1.12",
     "description": "Basic TypeScript-Functions.",
     "main": "index.js",
     "scripts": {},
     "keywords": [
         "TypeScript",
         "Functions",
+        "Methods",
+        "Basic",
         "Default",
         "System"
     ],
