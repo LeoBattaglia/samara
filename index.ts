@@ -2,6 +2,10 @@
 const http = require('http');
 const https = require('https');
 
+//Exports
+export {IndexedObject} from "./lib/IndexedObject";
+export {ObjectContainer} from "./lib/ObjectContainer";
+
 //Functions
 export function capitalizeFirstLetter(str:string):string{
     return str.charAt(0).toUpperCase() + str.slice(1);

@@ -1,9 +1,14 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = void 0;
+exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.ObjectContainer = exports.IndexedObject = void 0;
 //Constants
-var http = require('http');
-var https = require('https');
+const http = require('http');
+const https = require('https');
+//Exports
+var IndexedObject_1 = require("./lib/IndexedObject");
+Object.defineProperty(exports, "IndexedObject", { enumerable: true, get: function () { return IndexedObject_1.IndexedObject; } });
+var ObjectContainer_1 = require("./lib/ObjectContainer");
+Object.defineProperty(exports, "ObjectContainer", { enumerable: true, get: function () { return ObjectContainer_1.ObjectContainer; } });
 //Functions
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
@@ -22,17 +27,17 @@ function fillString(str, length, char, left) {
 }
 exports.fillString = fillString;
 function getRequest(url, callback) {
-    var httpsMode = url.indexOf("https:") == 0;
-    var client = httpsMode ? https : http;
-    client.get(url, function (res) {
-        var data = '';
-        res.on('data', function (d) {
+    let httpsMode = url.indexOf("https:") == 0;
+    let client = httpsMode ? https : http;
+    client.get(url, (res) => {
+        let data = '';
+        res.on('data', (d) => {
             data += d;
         });
-        res.on('end', function () {
+        res.on('end', () => {
             callback(data);
         });
-    }).on("error", function (err) {
+    }).on("error", (err) => {
         callback(undefined);
     });
 }
@@ -66,8 +71,8 @@ function removeDoubleSpaces(str) {
 exports.removeDoubleSpaces = removeDoubleSpaces;
 function removeTags(str) {
     while (str.indexOf("<") > -1 && str.indexOf(">") > str.indexOf("<")) {
-        var start = str.substring(0, str.indexOf("<"));
-        var end = str.substring(str.indexOf(">") + 1, str.length);
+        let start = str.substring(0, str.indexOf("<"));
+        let end = str.substring(str.indexOf(">") + 1, str.length);
         str = start + end;
     }
     return str;

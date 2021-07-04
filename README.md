@@ -11,6 +11,10 @@ OR
 const sys = require("samara");
 ``` 
 
+##Classes
+- IndexedObject
+- ObjectContainer
+
 ## Functions
 - capitalizeFirstLetter
 - fillString
