@@ -32,6 +32,10 @@ export class ObjectContainer{
         return -1;
     }
 
+    length():number{
+        return this.objects.length;
+    }
+
     pop():void{
         this.objects.pop();
     }
