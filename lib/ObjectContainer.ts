@@ -21,6 +21,10 @@ export class ObjectContainer{
         return undefined;
     }
 
+    getLength():number{
+        return this.objects.length;
+    }
+
     getPosition(id:number | string):number{
         let count:number = 0;
         for(let object of this.objects){
@@ -30,10 +34,6 @@ export class ObjectContainer{
             count++;
         }
         return -1;
-    }
-
-    length():number{
-        return this.objects.length;
     }
 
     pop():void{
