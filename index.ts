@@ -21,6 +21,14 @@ export function capitalizeFirstLetter(str:string):string{
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 
+export function createPath(str:string):string{
+    str = removeBreaksAndTabs(str);
+    str = removeDoubleSpaces(str);
+    str = replaceAll(str, " ", "_");
+    str = replaceUmlauts(str);
+    return str.trim();
+}
+
 export function fillString(str:string, length:number, char:string, left:Boolean):string{
     while(str.length < length){
         if(left){
@@ -119,6 +127,13 @@ export function replaceAll(str:string, search:string, replace:string):string{
     while(str.indexOf(search) > -1){
         str = str.replace(search, replace);
     }
+    return str;
+}
+
+export function replaceUmlauts(str:string):string{
+    str = replaceAll(str,"ä", "ae");
+    str = replaceAll(str,"ö", "oe");
+    str = replaceAll(str,"ü", "ue");
     return str;
 }
 

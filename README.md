@@ -19,6 +19,7 @@ const sys = require("samara");
 ## Functions
 - addBreak
 - capitalizeFirstLetter
+- createPath
 - fillString
 - getRequest
 - isNull
@@ -33,4 +34,5 @@ const sys = require("samara");
 - removeTabs
 - removeTags
 - replaceAll
+- replaceUmlauts
 - writeFile

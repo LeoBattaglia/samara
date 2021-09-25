@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -26,6 +26,14 @@ function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
 exports.capitalizeFirstLetter = capitalizeFirstLetter;
+function createPath(str) {
+    str = removeBreaksAndTabs(str);
+    str = removeDoubleSpaces(str);
+    str = replaceAll(str, " ", "_");
+    str = replaceUmlauts(str);
+    return str.trim();
+}
+exports.createPath = createPath;
 function fillString(str, length, char, left) {
     while (str.length < length) {
         if (left) {
@@ -130,6 +138,13 @@ function replaceAll(str, search, replace) {
     return str;
 }
 exports.replaceAll = replaceAll;
+function replaceUmlauts(str) {
+    str = replaceAll(str, "ä", "ae");
+    str = replaceAll(str, "ö", "oe");
+    str = replaceAll(str, "ü", "ue");
+    return str;
+}
+exports.replaceUmlauts = replaceUmlauts;
 function writeFile(path, content) {
     fs.writeFile(path, content, err => {
         if (err) {
