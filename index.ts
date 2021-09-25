@@ -8,6 +8,14 @@ export {IndexedObject} from "./lib/IndexedObject";
 export {ObjectContainer} from "./lib/ObjectContainer";
 
 //Functions
+export function addBreak(str:string, r:Boolean):string{
+    if(r){
+        return str + "\r\n";
+    }else{
+        return str + "\n";
+    }
+}
+
 export function capitalizeFirstLetter(str:string):string{
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -56,22 +64,41 @@ export function isNumeric(str:string):Boolean{
     }
 }
 
+export function isValidKey(str:string):Boolean{
+    if(!isNull(str) && str.length === 1){
+        return true;
+    }
+    return false;
+}
+
 export function removeAll(str:string, search:string):string{
     return replaceAll(str, search, "");
 }
 
-export function removeBreaksAndTabs(str:string):string{
-    str = removeAll(str, "\t");
+export function removeBreaks(str:string):string{
     str = removeAll(str, "\r\n");
+    str = removeAll(str, "\n");
+    return str.trim();
+}
+
+export function removeBreaksAndTabs(str:string):string{
+    str = removeBreaks(str);
+    str = removeTabs(str);
     return str.trim();
 }
 
 export function removeDoubleBreaks(str:string):string{
-    return replaceAll(str, "\r\n\r\n", "\r\n");
+    str =  replaceAll(str, "\r\n\r\n", "\r\n");
+    return replaceAll(str, "\n\n", "\n");
 }
 
 export function removeDoubleSpaces(str:string):string{
     return replaceAll(str, "  ", " ");
+}
+
+export function removeTabs(str:string):string{
+    str = removeAll(str, "\t");
+    return str.trim();
 }
 
 export function removeTags(str:string):string{

@@ -16,15 +16,19 @@ const sys = require("samara");
 - ObjectContainer
 
 ## Functions
+- addBreak
 - capitalizeFirstLetter
 - fillString
 - getRequest
 - isNull
 - isNumeric
+- isValidKey
 - removeAll
+- removeBreaks
 - removeBreaksAndTabs
 - removeDoubleBreaks
 - removeDoubleSpaces
+- removeTabs
 - removeTags
 - replaceAll
 - writeFile

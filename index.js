@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.ObjectContainer = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -11,6 +11,15 @@ Object.defineProperty(exports, "IndexedObject", { enumerable: true, get: functio
 var ObjectContainer_1 = require("./lib/ObjectContainer");
 Object.defineProperty(exports, "ObjectContainer", { enumerable: true, get: function () { return ObjectContainer_1.ObjectContainer; } });
 //Functions
+function addBreak(str, r) {
+    if (r) {
+        return str + "\r\n";
+    }
+    else {
+        return str + "\n";
+    }
+}
+exports.addBreak = addBreak;
 function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1);
 }
@@ -62,24 +71,43 @@ function isNumeric(str) {
     }
 }
 exports.isNumeric = isNumeric;
+function isValidKey(str) {
+    if (!isNull(str) && str.length === 1) {
+        return true;
+    }
+    return false;
+}
+exports.isValidKey = isValidKey;
 function removeAll(str, search) {
     return replaceAll(str, search, "");
 }
 exports.removeAll = removeAll;
-function removeBreaksAndTabs(str) {
-    str = removeAll(str, "\t");
+function removeBreaks(str) {
     str = removeAll(str, "\r\n");
+    str = removeAll(str, "\n");
+    return str.trim();
+}
+exports.removeBreaks = removeBreaks;
+function removeBreaksAndTabs(str) {
+    str = removeBreaks(str);
+    str = removeTabs(str);
     return str.trim();
 }
 exports.removeBreaksAndTabs = removeBreaksAndTabs;
 function removeDoubleBreaks(str) {
-    return replaceAll(str, "\r\n\r\n", "\r\n");
+    str = replaceAll(str, "\r\n\r\n", "\r\n");
+    return replaceAll(str, "\n\n", "\n");
 }
 exports.removeDoubleBreaks = removeDoubleBreaks;
 function removeDoubleSpaces(str) {
     return replaceAll(str, "  ", " ");
 }
 exports.removeDoubleSpaces = removeDoubleSpaces;
+function removeTabs(str) {
+    str = removeAll(str, "\t");
+    return str.trim();
+}
+exports.removeTabs = removeTabs;
 function removeTags(str) {
     while (str.indexOf("<") > -1 && str.indexOf(">") > str.indexOf("<")) {
         let start = str.substring(0, str.indexOf("<"));
