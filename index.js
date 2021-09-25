@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -80,6 +80,10 @@ function isValidKey(str) {
     return false;
 }
 exports.isValidKey = isValidKey;
+function readFile(path) {
+    return fs.readFileSync(path).toString();
+}
+exports.readFile = readFile;
 function removeAll(str, search) {
     return replaceAll(str, search, "");
 }

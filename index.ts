@@ -72,6 +72,10 @@ export function isValidKey(str:string):Boolean{
     return false;
 }
 
+export function readFile(path:string):string{
+    return fs.readFileSync(path).toString();
+}
+
 export function removeAll(str:string, search:string):string{
     return replaceAll(str, search, "");
 }
