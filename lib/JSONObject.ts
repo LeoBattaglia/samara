@@ -33,6 +33,10 @@ export class JSONObject{
         this.add("}");
     }
 
+    getString():string{
+        return this.sc + "}";
+    }
+
     openArray():void{
         this.add("[");
     }
