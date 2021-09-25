@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.ObjectContainer = exports.IndexedObject = void 0;
+exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.ObjectContainer = exports.IndexedObject = void 0;
 //Constants
 const http = require('http');
 const https = require('https');
@@ -51,6 +51,16 @@ function isNull(str) {
     }
 }
 exports.isNull = isNull;
+function isNumeric(str) {
+    let nr = Number(str);
+    if (nr === NaN) {
+        return false;
+    }
+    else {
+        return true;
+    }
+}
+exports.isNumeric = isNumeric;
 function removeAll(str, search) {
     return replaceAll(str, search, "");
 }

@@ -46,6 +46,15 @@ export function isNull(str:string):Boolean{
     }
 }
 
+export function isNumeric(str:string):Boolean{
+    let nr = Number(str);
+    if(nr === NaN){
+        return false;
+    }else{
+        return true;
+    }
+}
+
 export function removeAll(str:string, search:string):string{
     return replaceAll(str, search, "");
 }
