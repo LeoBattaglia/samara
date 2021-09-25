@@ -5,6 +5,7 @@ const https = require("https");
 
 //Exports
 export {IndexedObject} from "./lib/IndexedObject";
+export {JSONObject} from "./lib/JSONObject";
 export {ObjectContainer} from "./lib/ObjectContainer";
 
 //Functions

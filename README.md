@@ -13,6 +13,7 @@ const sys = require("samara");
 
 ## Classes
 - IndexedObject
+- JSONObject
 - ObjectContainer
 
 ## Functions

@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -8,6 +8,8 @@ const https = require("https");
 //Exports
 var IndexedObject_1 = require("./lib/IndexedObject");
 Object.defineProperty(exports, "IndexedObject", { enumerable: true, get: function () { return IndexedObject_1.IndexedObject; } });
+var JSONObject_1 = require("./lib/JSONObject");
+Object.defineProperty(exports, "JSONObject", { enumerable: true, get: function () { return JSONObject_1.JSONObject; } });
 var ObjectContainer_1 = require("./lib/ObjectContainer");
 Object.defineProperty(exports, "ObjectContainer", { enumerable: true, get: function () { return ObjectContainer_1.ObjectContainer; } });
 //Functions

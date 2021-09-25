@@ -1,0 +1,43 @@
+//Class
+export class JSONObject{
+    //Declarations
+    sc:string
+
+    //Constructor
+    constructor(){
+        this.sc = "{";
+    }
+
+    //Methods
+    add(str:string):void{
+        this.sc += str;
+    }
+
+    addValue(name:string, value:string, isString:Boolean, setComma:Boolean):void{
+        this.add("\"" + name + "\":");
+        if(isString){
+            this.add("\"" + value + "\"");
+        }else{
+            this.add(value);
+        }
+        if(setComma){
+            this.add(",");
+        }
+    }
+
+    closeArray():void{
+        this.add("]");
+    }
+
+    closeObject():void{
+        this.add("}");
+    }
+
+    openArray():void{
+        this.add("[");
+    }
+
+    openObject():void{
+        this.add("{");
+    }
+}
