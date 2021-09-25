@@ -13,8 +13,16 @@ export class JSONObject{
         this.sc += str;
     }
 
+    addColon(){
+        this.add(":");
+    }
+
     addComma(){
         this.add(",");
+    }
+
+    addCommaToBegin(){
+        this.sc = "," + this.sc;
     }
 
     addName(name:string):void{
