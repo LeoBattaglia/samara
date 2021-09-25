@@ -13,19 +13,23 @@ export class JSONObject{
         this.sc += str;
     }
 
+    addComma(){
+        this.add(",");
+    }
+
     addName(name:string):void{
         this.add("\"" + name + "\":");
     }
 
     addValue(name:string, value:string, isString:Boolean, setComma:Boolean):void{
-        this.add("\"" + name + "\":");
+        this.addName(name);
         if(isString){
             this.add("\"" + value + "\"");
         }else{
             this.add(value);
         }
         if(setComma){
-            this.add(",");
+            this.addComma();
         }
     }
 
