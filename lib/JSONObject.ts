@@ -13,6 +13,10 @@ export class JSONObject{
         this.sc += str;
     }
 
+    addName(name:string):void{
+        this.add("\"" + name + "\":");
+    }
+
     addValue(name:string, value:string, isString:Boolean, setComma:Boolean):void{
         this.add("\"" + name + "\":");
         if(isString){
