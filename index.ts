@@ -1,6 +1,7 @@
 //Constants
-const http = require('http');
-const https = require('https');
+const fs = require("fs");
+const http = require("http");
+const https = require("https");
 
 //Exports
 export {IndexedObject} from "./lib/IndexedObject";
@@ -87,4 +88,12 @@ export function replaceAll(str:string, search:string, replace:string):string{
         str = str.replace(search, replace);
     }
     return str;
+}
+
+export function writeFile(path:string, content:string){
+    fs.writeFile(path, content, err => {
+        if(err){
+            console.error(err);
+        }
+    });
 }

@@ -20,9 +20,11 @@ const sys = require("samara");
 - fillString
 - getRequest
 - isNull
+- isNumeric
 - removeAll
 - removeBreaksAndTabs
 - removeDoubleBreaks
 - removeDoubleSpaces
 - removeTags
 - replaceAll
+- writeFile

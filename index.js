@@ -1,9 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.ObjectContainer = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceAll = exports.removeTags = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeAll = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.capitalizeFirstLetter = exports.ObjectContainer = exports.IndexedObject = void 0;
 //Constants
-const http = require('http');
-const https = require('https');
+const fs = require("fs");
+const http = require("http");
+const https = require("https");
 //Exports
 var IndexedObject_1 = require("./lib/IndexedObject");
 Object.defineProperty(exports, "IndexedObject", { enumerable: true, get: function () { return IndexedObject_1.IndexedObject; } });
@@ -95,4 +96,12 @@ function replaceAll(str, search, replace) {
     return str;
 }
 exports.replaceAll = replaceAll;
+function writeFile(path, content) {
+    fs.writeFile(path, content, err => {
+        if (err) {
+            console.error(err);
+        }
+    });
+}
+exports.writeFile = writeFile;
 //# sourceMappingURL=index.js.map
