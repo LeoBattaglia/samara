@@ -22,6 +22,7 @@ export function capitalizeFirstLetter(str:string):string{
 }
 
 export function createPath(str:string):string{
+    str = str.toLowerCase();
     str = removeBreaksAndTabs(str);
     str = removeDoubleSpaces(str);
     str = replaceAll(str, " ", "_");
@@ -54,6 +55,9 @@ export function getRequest(url:string, callback){
     }).on("error", (err) => {
         callback(undefined);
     });
+}
+export function isFileExist(str:string):Boolean{
+    return fs.existsSync(str);
 }
 
 export function isNull(str:string):Boolean{

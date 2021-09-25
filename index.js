@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.getRequest = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -27,6 +27,7 @@ function capitalizeFirstLetter(str) {
 }
 exports.capitalizeFirstLetter = capitalizeFirstLetter;
 function createPath(str) {
+    str = str.toLowerCase();
     str = removeBreaksAndTabs(str);
     str = removeDoubleSpaces(str);
     str = replaceAll(str, " ", "_");
@@ -62,6 +63,10 @@ function getRequest(url, callback) {
     });
 }
 exports.getRequest = getRequest;
+function isFileExist(str) {
+    return fs.existsSync(str);
+}
+exports.isFileExist = isFileExist;
 function isNull(str) {
     if (str === null || str === undefined || str === "") {
         return true;

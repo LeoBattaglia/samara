@@ -22,6 +22,7 @@ const sys = require("samara");
 - createPath
 - fillString
 - getRequest
+- isFileExist
 - isNull
 - isNumeric
 - isValidKey
