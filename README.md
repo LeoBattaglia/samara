@@ -15,6 +15,7 @@ const sys = require("samara");
 - IndexedObject
 - JSONObject
 - ObjectContainer
+- SourceObject
 
 ## Functions
 - addBreak

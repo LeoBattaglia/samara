@@ -20,4 +20,8 @@ export class SourceObject{
     getString():string{
         return this.sc;
     }
+
+    newLine():void{
+        this.sc += "\n";
+    }
 }
