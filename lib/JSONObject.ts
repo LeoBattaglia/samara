@@ -1,7 +1,7 @@
 //Class
 export class JSONObject{
     //Declarations
-    sc:string
+    sc:string;
 
     //Constructor
     constructor(){
