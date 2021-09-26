@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -12,6 +12,8 @@ var JSONObject_1 = require("./lib/JSONObject");
 Object.defineProperty(exports, "JSONObject", { enumerable: true, get: function () { return JSONObject_1.JSONObject; } });
 var ObjectContainer_1 = require("./lib/ObjectContainer");
 Object.defineProperty(exports, "ObjectContainer", { enumerable: true, get: function () { return ObjectContainer_1.ObjectContainer; } });
+var SourceObject_1 = require("./lib/SourceObject");
+Object.defineProperty(exports, "SourceObject", { enumerable: true, get: function () { return SourceObject_1.SourceObject; } });
 //Functions
 function addBreak(str, r) {
     if (r) {

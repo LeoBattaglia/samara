@@ -7,6 +7,7 @@ const https = require("https");
 export {IndexedObject} from "./lib/IndexedObject";
 export {JSONObject} from "./lib/JSONObject";
 export {ObjectContainer} from "./lib/ObjectContainer";
+export {SourceObject} from "./lib/SourceObject";
 
 //Functions
 export function addBreak(str:string, r:Boolean):string{
