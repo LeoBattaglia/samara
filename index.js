@@ -1,8 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getUUID = exports.getRequest = exports.getRandomInt = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getUUID = exports.getRequest = exports.getRandomInt = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = exports.chars = void 0;
 //Constants
-const chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+exports.chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
     "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
     "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
     "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7",
@@ -132,24 +132,24 @@ function getRequest(url, callback) {
 exports.getRequest = getRequest;
 function getUUID() {
     let uuid = "";
-    for (let i = 0; i < chars.length; i++) {
-        let random = getRandomInt(0, chars.length - 1);
+    for (let i = 0; i < exports.chars.length; i++) {
+        let random = getRandomInt(0, exports.chars.length - 1);
         let random2 = -1;
         while (random2 === -1) {
-            random2 = getRandomInt(0, chars.length - 1);
+            random2 = getRandomInt(0, exports.chars.length - 1);
             if (random2 === random) {
                 random2 = -1;
             }
         }
-        let temp = chars[random];
-        chars[random] = chars[random2];
-        chars[random2] = temp;
+        let temp = exports.chars[random];
+        exports.chars[random] = exports.chars[random2];
+        exports.chars[random2] = temp;
     }
     for (let i = 0; i < 8; i++) {
         let part = "";
         while (part.length < 8) {
-            let random = getRandomInt(0, chars.length - 1);
-            part += chars[random];
+            let random = getRandomInt(0, exports.chars.length - 1);
+            part += exports.chars[random];
         }
         uuid += part;
         if (i < 7) {
