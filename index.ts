@@ -1,4 +1,9 @@
 //Constants
+const chars:string[] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+    "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
+    "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+    "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7",
+    "8", "9"];
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
@@ -42,6 +47,19 @@ export function fillString(str:string, length:number, char:string, left:Boolean)
     return str;
 }
 
+export function getRandomIntPseudo(min:number, max:number):number{
+    if(max < min){
+        let temp:number = min;
+        min = max;
+        max = temp;
+    }
+    max++;
+    let difference:number = max - min;
+    let random:number = Math.floor(Math.random() * difference);
+    random += min;
+    return random;
+}
+
 export function getRequest(url:string, callback){
     let httpsMode:Boolean = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
@@ -57,6 +75,25 @@ export function getRequest(url:string, callback){
         callback(undefined);
     });
 }
+
+export function getUUID():string{
+    let uuid:string = "";
+    //console.log("FFF: " + chars.length);
+    for(let i:number = 0; i < 8; i++){
+        let part = "";
+        while(part.length < 8){
+            let random = getRandomIntPseudo(0, chars.length - 1);
+            part += chars[random];
+        }
+        uuid += part;
+        if(i<7){
+            uuid += "-";
+        }
+    }
+
+    return uuid;
+}
+
 export function isFileExist(str:string):Boolean{
     return fs.existsSync(str);
 }
@@ -106,7 +143,7 @@ export function removeBreaksAndTabs(str:string):string{
 }
 
 export function removeDoubleBreaks(str:string):string{
-    str =  replaceAll(str, "\r\n\r\n", "\r\n");
+    str = replaceAll(str, "\r\n\r\n", "\r\n");
     return replaceAll(str, "\n\n", "\n");
 }
 
@@ -136,9 +173,9 @@ export function replaceAll(str:string, search:string, replace:string):string{
 }
 
 export function replaceUmlauts(str:string):string{
-    str = replaceAll(str,"ä", "ae");
-    str = replaceAll(str,"ö", "oe");
-    str = replaceAll(str,"ü", "ue");
+    str = replaceAll(str, "ä", "ae");
+    str = replaceAll(str, "ö", "oe");
+    str = replaceAll(str, "ü", "ue");
     return str;
 }
 

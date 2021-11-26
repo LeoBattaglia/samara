@@ -1,7 +1,12 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getUUID = exports.getRequest = exports.getRandomIntPseudo = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
+const chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
+    "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
+    "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
+    "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7",
+    "8", "9"];
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
@@ -49,6 +54,19 @@ function fillString(str, length, char, left) {
     return str;
 }
 exports.fillString = fillString;
+function getRandomIntPseudo(min, max) {
+    if (max < min) {
+        let temp = min;
+        min = max;
+        max = temp;
+    }
+    max++;
+    let difference = max - min;
+    let random = Math.floor(Math.random() * difference);
+    random += min;
+    return random;
+}
+exports.getRandomIntPseudo = getRandomIntPseudo;
 function getRequest(url, callback) {
     let httpsMode = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
@@ -65,6 +83,23 @@ function getRequest(url, callback) {
     });
 }
 exports.getRequest = getRequest;
+function getUUID() {
+    let uuid = "";
+    //console.log("FFF: " + chars.length);
+    for (let i = 0; i < 8; i++) {
+        let part = "";
+        while (part.length < 8) {
+            let random = getRandomIntPseudo(0, chars.length - 1);
+            part += chars[random];
+        }
+        uuid += part;
+        if (i < 7) {
+            uuid += "-";
+        }
+    }
+    return uuid;
+}
+exports.getUUID = getUUID;
 function isFileExist(str) {
     return fs.existsSync(str);
 }
