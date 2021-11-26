@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getUUID = exports.getRequest = exports.getRandomIntPseudo = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getUUID = exports.getRequest = exports.getRandomInt = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
     "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
@@ -54,6 +54,54 @@ function fillString(str, length, char, left) {
     return str;
 }
 exports.fillString = fillString;
+function getChancePerCent(chance) {
+    let random = getRandomInt(1, 100);
+    if (random <= chance) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+exports.getChancePerCent = getChancePerCent;
+function getChancePerMill(chance) {
+    let random = getRandomInt(1, 1000);
+    if (random <= chance) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+exports.getChancePerMill = getChancePerMill;
+function getRandomInt(min, max) {
+    if (max < min) {
+        let temp = min;
+        min = max;
+        max = temp;
+    }
+    max++;
+    let difference = max - min;
+    let ints = [];
+    for (let i = min; i < difference + min; i++) {
+        ints.push(i);
+    }
+    for (let i = 0; i < difference; i++) {
+        let random = getRandomIntPseudo(0, ints.length - 1);
+        let random2 = -1;
+        while (random2 === -1) {
+            random2 = getRandomIntPseudo(0, ints.length - 1);
+            if (random2 === random) {
+                random2 = -1;
+            }
+        }
+        let temp = ints[random];
+        ints[random] = ints[random2];
+        ints[random2] = temp;
+    }
+    return ints[getRandomIntPseudo(0, ints.length - 1)];
+}
+exports.getRandomInt = getRandomInt;
 function getRandomIntPseudo(min, max) {
     if (max < min) {
         let temp = min;
@@ -66,7 +114,6 @@ function getRandomIntPseudo(min, max) {
     random += min;
     return random;
 }
-exports.getRandomIntPseudo = getRandomIntPseudo;
 function getRequest(url, callback) {
     let httpsMode = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
@@ -85,11 +132,23 @@ function getRequest(url, callback) {
 exports.getRequest = getRequest;
 function getUUID() {
     let uuid = "";
-    //console.log("FFF: " + chars.length);
+    for (let i = 0; i < chars.length; i++) {
+        let random = getRandomInt(0, chars.length - 1);
+        let random2 = -1;
+        while (random2 === -1) {
+            random2 = getRandomInt(0, chars.length - 1);
+            if (random2 === random) {
+                random2 = -1;
+            }
+        }
+        let temp = chars[random];
+        chars[random] = chars[random2];
+        chars[random2] = temp;
+    }
     for (let i = 0; i < 8; i++) {
         let part = "";
         while (part.length < 8) {
-            let random = getRandomIntPseudo(0, chars.length - 1);
+            let random = getRandomInt(0, chars.length - 1);
             part += chars[random];
         }
         uuid += part;

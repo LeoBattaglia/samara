@@ -22,7 +22,11 @@ const sys = require("samara");
 - capitalizeFirstLetter
 - createPath
 - fillString
+- getChancePerCent
+- getChancePerMill
+- getRandomInt
 - getRequest
+- getUUID
 - isFileExist
 - isNull
 - isNumeric
