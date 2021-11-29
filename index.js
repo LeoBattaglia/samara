@@ -1,20 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getUUID = exports.getRequest = exports.getRandomInt = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = exports.chars_password = exports.chars = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
-exports.chars = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o",
-    "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z", "A", "B", "C", "D",
-    "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S",
-    "T", "U", "V", "W", "X", "Y", "Z", "0", "1", "2", "3", "4", "5", "6", "7",
-    "8", "9"];
-exports.chars_password = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m",
-    "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z",
-    "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M",
-    "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",
-    "0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ".", "+", "-",
-    "*", "/", "<", ">", "ç", "%", "&", "(", ")", "?", "!", "[", "]",
-    ":", ",", "$", "£", "@", "#", "|", "¢", "ä", "Ä", "ö", "Ö", "ü",
-    "Ü", "_"];
 const fs = require("fs");
 const http = require("http");
 const https = require("https");
@@ -63,7 +50,7 @@ function fillString(str, length, char, left) {
 }
 exports.fillString = fillString;
 function getChancePerCent(chance) {
-    let random = getRandomInt(1, 100);
+    let random = getRandomIntPseudo(1, 100);
     if (random <= chance) {
         return true;
     }
@@ -73,7 +60,7 @@ function getChancePerCent(chance) {
 }
 exports.getChancePerCent = getChancePerCent;
 function getChancePerMill(chance) {
-    let random = getRandomInt(1, 1000);
+    let random = getRandomIntPseudo(1, 1000);
     if (random <= chance) {
         return true;
     }
@@ -82,34 +69,6 @@ function getChancePerMill(chance) {
     }
 }
 exports.getChancePerMill = getChancePerMill;
-function getRandomInt(min, max) {
-    if (max < min) {
-        let temp = min;
-        min = max;
-        max = temp;
-    }
-    max++;
-    let difference = max - min;
-    let ints = [];
-    for (let i = min; i < difference + min; i++) {
-        ints.push(i);
-    }
-    for (let i = 0; i < difference; i++) {
-        let random = getRandomIntPseudo(0, ints.length - 1);
-        let random2 = -1;
-        while (random2 === -1) {
-            random2 = getRandomIntPseudo(0, ints.length - 1);
-            if (random2 === random) {
-                random2 = -1;
-            }
-        }
-        let temp = ints[random];
-        ints[random] = ints[random2];
-        ints[random2] = temp;
-    }
-    return ints[getRandomIntPseudo(0, ints.length - 1)];
-}
-exports.getRandomInt = getRandomInt;
 function getRandomIntPseudo(min, max) {
     if (max < min) {
         let temp = min;
@@ -122,6 +81,7 @@ function getRandomIntPseudo(min, max) {
     random += min;
     return random;
 }
+exports.getRandomIntPseudo = getRandomIntPseudo;
 function getRequest(url, callback) {
     let httpsMode = url.indexOf("https:") == 0;
     let client = httpsMode ? https : http;
@@ -138,35 +98,6 @@ function getRequest(url, callback) {
     });
 }
 exports.getRequest = getRequest;
-function getUUID() {
-    let uuid = "";
-    for (let i = 0; i < exports.chars.length; i++) {
-        let random = getRandomInt(0, exports.chars.length - 1);
-        let random2 = -1;
-        while (random2 === -1) {
-            random2 = getRandomInt(0, exports.chars.length - 1);
-            if (random2 === random) {
-                random2 = -1;
-            }
-        }
-        let temp = exports.chars[random];
-        exports.chars[random] = exports.chars[random2];
-        exports.chars[random2] = temp;
-    }
-    for (let i = 0; i < 8; i++) {
-        let part = "";
-        while (part.length < 8) {
-            let random = getRandomInt(0, exports.chars.length - 1);
-            part += exports.chars[random];
-        }
-        uuid += part;
-        if (i < 7) {
-            uuid += "-";
-        }
-    }
-    return uuid;
-}
-exports.getUUID = getUUID;
 function isFileExist(str) {
     return fs.existsSync(str);
 }
