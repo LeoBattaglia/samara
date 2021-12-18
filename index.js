@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -14,6 +14,16 @@ var ObjectContainer_1 = require("./lib/ObjectContainer");
 Object.defineProperty(exports, "ObjectContainer", { enumerable: true, get: function () { return ObjectContainer_1.ObjectContainer; } });
 var SourceObject_1 = require("./lib/SourceObject");
 Object.defineProperty(exports, "SourceObject", { enumerable: true, get: function () { return SourceObject_1.SourceObject; } });
+//Classes
+class StringExtract {
+    //Constructor
+    constructor(pre, ext, post) {
+        this.pre = pre;
+        this.ext = ext;
+        this.post = post;
+    }
+}
+exports.StringExtract = StringExtract;
 //Functions
 function addBreak(str, r) {
     if (r) {
@@ -37,6 +47,20 @@ function createPath(str) {
     return str.trim();
 }
 exports.createPath = createPath;
+function extractFromString(str, start, end) {
+    let ext;
+    if (str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)) {
+        let pre = str.substring(0, str.indexOf(start));
+        let post = str.substring(str.indexOf(end) + end.length, str.length);
+        let extraction = str.substring(str.indexOf(start), str.indexOf(end));
+        ext = new StringExtract(pre, extraction, post);
+    }
+    else {
+        ext = undefined;
+    }
+    return ext;
+}
+exports.extractFromString = extractFromString;
 function fillString(str, length, char, left) {
     while (str.length < length) {
         if (left) {

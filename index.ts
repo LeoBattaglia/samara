@@ -9,6 +9,21 @@ export {JSONObject} from "./lib/JSONObject";
 export {ObjectContainer} from "./lib/ObjectContainer";
 export {SourceObject} from "./lib/SourceObject";
 
+//Classes
+export class StringExtract{
+    //Declarations
+    pre:string;
+    ext:string;
+    post:string;
+
+    //Constructor
+    constructor(pre:string, ext:string, post:string){
+        this.pre = pre;
+        this.ext = ext;
+        this.post = post;
+    }
+}
+
 //Functions
 export function addBreak(str:string, r:Boolean):string{
     if(r){
@@ -29,6 +44,19 @@ export function createPath(str:string):string{
     str = replaceAll(str, " ", "_");
     str = replaceUmlauts(str);
     return str.trim();
+}
+
+export function extractFromString(str:string, start:string, end:string):StringExtract{
+    let ext:StringExtract;
+    if(str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)){
+        let pre:string = str.substring(0, str.indexOf(start));
+        let post:string = str.substring(str.indexOf(end) + end.length, str.length);
+        let extraction:string = str.substring(str.indexOf(start), str.indexOf(end));
+        ext = new StringExtract(pre, extraction, post);
+    }else{
+        ext = undefined;
+    }
+    return ext;
 }
 
 export function fillString(str:string, length:number, char:string, left:Boolean):string{

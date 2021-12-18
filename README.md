@@ -21,6 +21,7 @@ const sys = require("samara");
 - addBreak
 - capitalizeFirstLetter
 - createPath
+- extractFromString
 - fillString
 - getChancePerCent
 - getChancePerMill
