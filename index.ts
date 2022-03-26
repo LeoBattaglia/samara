@@ -46,6 +46,15 @@ export function createPath(str:string):string{
     return str.trim();
 }
 
+export function cutFromString(str:string, start:string, end:string){
+    while(str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)){
+        let begin = str.substring(0, str.indexOf(start));
+        let end2 = str.substring(str.indexOf(end) + end.length, str.length);
+        str = begin + end2;
+    }
+    return str;
+}
+
 export function extractFromString(str:string, start:string, end:string):StringExtract{
     let ext:StringExtract;
     if(str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)){

@@ -21,13 +21,13 @@ const sys = require("samara");
 - addBreak
 - capitalizeFirstLetter
 - createPath
+- cutFromString
 - extractFromString
 - fillString
 - getChancePerCent
 - getChancePerMill
-- getRandomInt
+- getRandomIntPseudo
 - getRequest
-- getUUID
 - isFileExist
 - isNull
 - isNumeric

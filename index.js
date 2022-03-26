@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.cutFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -47,6 +47,15 @@ function createPath(str) {
     return str.trim();
 }
 exports.createPath = createPath;
+function cutFromString(str, start, end) {
+    while (str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)) {
+        let begin = str.substring(0, str.indexOf(start));
+        let end2 = str.substring(str.indexOf(end) + end.length, str.length);
+        str = begin + end2;
+    }
+    return str;
+}
+exports.cutFromString = cutFromString;
 function extractFromString(str, start, end) {
     let ext;
     if (str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)) {
