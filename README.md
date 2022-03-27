@@ -39,6 +39,7 @@ const sys = require("samara");
 - removeBreaksAndTabs
 - removeDoubleBreaks
 - removeDoubleSpaces
+- removeMultipleSpaces
 - removeTabs
 - removeTags
 - replaceAll

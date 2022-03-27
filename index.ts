@@ -187,13 +187,24 @@ export function removeDoubleSpaces(str:string):string{
     return replaceAll(str, "  ", " ");
 }
 
+export function removeMultipleSpaces(str:string):string{
+    let spaces:number = 128;
+    let replace:string;
+    while(spaces > 1){
+        replace = fillString("", spaces, " ", false);
+        str = replaceAll(str, replace, " ");
+        if(spaces > 8){
+            spaces = spaces / 2;
+        }else{
+            spaces--;
+        }
+    }
+    return str;
+}
+
 export function removeTabs(str:string):string{
     str = removeAll(str, "\t");
     return str.trim();
-}
-
-export function removeFirstLine(){
-
 }
 
 export function removeTags(str:string):string{
@@ -216,6 +227,9 @@ export function replaceUmlauts(str:string):string{
     str = replaceAll(str, "ä", "ae");
     str = replaceAll(str, "ö", "oe");
     str = replaceAll(str, "ü", "ue");
+    str = replaceAll(str, "Ä", "Ae");
+    str = replaceAll(str, "Ö", "Oe");
+    str = replaceAll(str, "Ü", "Ue");
     return str;
 }
 

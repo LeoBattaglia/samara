@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeFirstLine = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.readDirectory = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.cutFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeMultipleSpaces = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.readDirectory = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.cutFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -194,14 +194,27 @@ function removeDoubleSpaces(str) {
     return replaceAll(str, "  ", " ");
 }
 exports.removeDoubleSpaces = removeDoubleSpaces;
+function removeMultipleSpaces(str) {
+    let spaces = 128;
+    let replace;
+    while (spaces > 1) {
+        replace = fillString("", spaces, " ", false);
+        str = replaceAll(str, replace, " ");
+        if (spaces > 8) {
+            spaces = spaces / 2;
+        }
+        else {
+            spaces--;
+        }
+    }
+    return str;
+}
+exports.removeMultipleSpaces = removeMultipleSpaces;
 function removeTabs(str) {
     str = removeAll(str, "\t");
     return str.trim();
 }
 exports.removeTabs = removeTabs;
-function removeFirstLine() {
-}
-exports.removeFirstLine = removeFirstLine;
 function removeTags(str) {
     while (str.indexOf("<") > -1 && str.indexOf(">") > str.indexOf("<")) {
         let start = str.substring(0, str.indexOf("<"));
@@ -222,6 +235,9 @@ function replaceUmlauts(str) {
     str = replaceAll(str, "ä", "ae");
     str = replaceAll(str, "ö", "oe");
     str = replaceAll(str, "ü", "ue");
+    str = replaceAll(str, "Ä", "Ae");
+    str = replaceAll(str, "Ö", "Oe");
+    str = replaceAll(str, "Ü", "Ue");
     return str;
 }
 exports.replaceUmlauts = replaceUmlauts;
