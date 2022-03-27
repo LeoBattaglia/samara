@@ -46,7 +46,7 @@ export function createPath(str:string):string{
     return str.trim();
 }
 
-export function cutFromString(str:string, start:string, end:string){
+export function cutFromString(str:string, start:string, end:string):string{
     while(str.indexOf(start) > -1 && str.indexOf(end) > str.indexOf(start)){
         let begin = str.substring(0, str.indexOf(start));
         let end2 = str.substring(str.indexOf(end) + end.length, str.length);
@@ -154,6 +154,10 @@ export function isValidKey(str:string):Boolean{
     return false;
 }
 
+export function readDirectory(path:string):string[]{
+    return fs.readdirSync(path);
+}
+
 export function readFile(path:string):string{
     return fs.readFileSync(path).toString();
 }
@@ -186,6 +190,10 @@ export function removeDoubleSpaces(str:string):string{
 export function removeTabs(str:string):string{
     str = removeAll(str, "\t");
     return str.trim();
+}
+
+export function removeFirstLine(){
+
 }
 
 export function removeTags(str:string):string{

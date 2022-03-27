@@ -32,6 +32,7 @@ const sys = require("samara");
 - isNull
 - isNumeric
 - isValidKey
+- readDirectory
 - readFile
 - removeAll
 - removeBreaks

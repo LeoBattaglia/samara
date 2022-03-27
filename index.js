@@ -1,6 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.cutFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
+exports.writeFile = exports.replaceUmlauts = exports.replaceAll = exports.removeTags = exports.removeFirstLine = exports.removeTabs = exports.removeDoubleSpaces = exports.removeDoubleBreaks = exports.removeBreaksAndTabs = exports.removeBreaks = exports.removeAll = exports.readFile = exports.readDirectory = exports.isValidKey = exports.isNumeric = exports.isNull = exports.isFileExist = exports.getRequest = exports.getRandomIntPseudo = exports.getChancePerMill = exports.getChancePerCent = exports.fillString = exports.extractFromString = exports.cutFromString = exports.createPath = exports.capitalizeFirstLetter = exports.addBreak = exports.StringExtract = exports.SourceObject = exports.ObjectContainer = exports.JSONObject = exports.IndexedObject = void 0;
 //Constants
 const fs = require("fs");
 const http = require("http");
@@ -161,6 +161,10 @@ function isValidKey(str) {
     return false;
 }
 exports.isValidKey = isValidKey;
+function readDirectory(path) {
+    return fs.readdirSync(path);
+}
+exports.readDirectory = readDirectory;
 function readFile(path) {
     return fs.readFileSync(path).toString();
 }
@@ -195,6 +199,9 @@ function removeTabs(str) {
     return str.trim();
 }
 exports.removeTabs = removeTabs;
+function removeFirstLine() {
+}
+exports.removeFirstLine = removeFirstLine;
 function removeTags(str) {
     while (str.indexOf("<") > -1 && str.indexOf(">") > str.indexOf("<")) {
         let start = str.substring(0, str.indexOf("<"));

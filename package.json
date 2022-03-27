@@ -1,6 +1,6 @@
 {
     "name": "samara",
-    "version": "0.1.38",
+    "version": "0.1.39",
     "description": "Basic TypeScript-Functions.",
     "main": "index.js",
     "scripts": {},
